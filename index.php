@@ -14,13 +14,20 @@
         <!-- Head Title -->
         <title>php-strong-password-generator</title>
     </head>
-    <body>
+    <body style="background-color: #001632">
         <!-- Main -->
         <main>
             <!-- Main Container -->
-            <div class="container">
+            <div class="container my-5">
                 <!-- Main Row -->
-                <div class="row"></div>
+                <div class="row">
+                    <!-- Title Col -->
+                    <div class="col-12 text-center">
+                        <!-- First Title -->
+                        <h1 class="text-secondary fw-bold">Strong Password Generator</h1>
+                        <!-- Second Title -->
+                        <h2 class="text-white fw-bold">Genera una password sicura</h2>
+                    </div>
                 </div>
             </div>
         </main>
