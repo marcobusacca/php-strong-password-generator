@@ -1,16 +1,13 @@
 <!-- SCRIPT PHP -->
 <?php
-    // IMPORTO FUNCTIONS.PHP
-    require __DIR__."/partials/functions.php";
-
     // CONTROLLO CHE LE VARIABILI DEL METODO GET NON SIANO Null o VALORI NON ACCETTATI
     if(isset($_GET['password-length']) && $_GET['password-length'] !== '' && $_GET['password-length'] > 0) {
 
-        // RECUPERO PASSWORD_LENGTH
-        $passwordLength = $_GET['password-length'];
+        // AVVIO LA SESSIONE
+        session_start();
 
-        // RICHIAMO LA FUNZIONE CHE GENERA UNA PASSWORD RANDOM PASSANDO COME PARAMETRO: PASSWORD_LENGTH, E INSERISCO IL RISULTATO DENTRO PASSWORD
-        $password = randomPassword($passwordLength);
+        // SALVO PASSWORD_LENGTH DENTRO SESSION
+        $_SESSION['password-length'] = $_GET['password-length'];
     }
 ?>
 
@@ -64,14 +61,10 @@
                                     </div>
                                 </div>
                             </form>
-                        <?php } else{ ?>
-                        <!-- Password Content -->
-                        <div class="password-content text-center bg-white rounded-3 p-5 w-50">
-                            <h3>
-                                <?php echo $password ?>
-                            </h3>
-                        </div>
-                        <?php } ?>
+                        <?php } else{
+                                header("Location: ./partials/inner_page.php");
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
