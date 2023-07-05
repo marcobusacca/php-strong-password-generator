@@ -51,7 +51,7 @@
                                     <!-- Input Col -->
                                     <div class="col-4">
                                         <!-- Password Length Input -->
-                                        <input type="number" name="password-length" id="password-length" min="1" max="100" class="py-2">
+                                        <input type="number" name="password-length" id="password-length" min="1" max="100" class="py-2 w-100">
                                     </div>
                                     <!-- Button Col -->
                                     <div class="col-12 d-flex justify-content-center mt-5">
