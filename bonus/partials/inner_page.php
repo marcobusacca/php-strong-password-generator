@@ -8,7 +8,7 @@
 
     // CONTROLLO SE LA SESSIONE è VUOTA
     if (!empty($_SESSION)){
-
+        
         // RECUPERO PASSWORD_LENGTH
         $passwordLength = $_SESSION['password-length'];
     

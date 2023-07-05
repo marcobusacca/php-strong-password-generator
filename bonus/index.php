@@ -1,13 +1,31 @@
 <!-- SCRIPT PHP -->
 <?php
     // CONTROLLO CHE LE VARIABILI DEL METODO GET NON SIANO Null o VALORI NON ACCETTATI
-    if(isset($_GET['password-length']) && $_GET['password-length'] !== '' && $_GET['password-length'] > 0) {
+    if(isset($_GET['password-length']) && $_GET['password-length'] !== '' && $_GET['password-length'] > 0 && isset($_GET['characters-ripetition'])) {
 
         // AVVIO LA SESSIONE
         session_start();
 
         // SALVO PASSWORD_LENGTH DENTRO SESSION
         $_SESSION['password-length'] = $_GET['password-length'];
+
+        // SALVO CHARACTERS_RIPETITION DENTRO SESSION
+        $_SESSION['characters-ripetition'] = $_GET['characters-ripetition'];
+
+        if (isset($_GET['letters'])){
+            // SALVO LETTERS DENTRO SESSION
+            $_SESSION['letters'] = $_GET['letters'];
+        }
+
+        if (isset($_GET['numbers'])){
+            // SALVO NUMBERS DENTRO SESSION
+            $_SESSION['numbers'] = $_GET['numbers'];
+        }
+
+        if (isset($_GET['symbols'])){
+            // SALVO NUMBERS DENTRO SESSION
+            $_SESSION['symbols'] = $_GET['symbols'];
+        }
     }
 ?>
 
@@ -38,7 +56,7 @@
                     </div>
                     <!-- Form Col -->
                     <div class="col-12 d-flex justify-content-center">
-                        <?php if(!isset($_GET['password-length']) || $_GET['password-length'] === '' || $_GET['password-length'] <= 0){ ?>
+                        <?php if(empty($_SESSION)){ ?>
                             <!-- Form -->
                             <form action="index.php" method="GET" class="bg-white rounded-3 p-5 w-50">
                                 <!-- Form Row -->
