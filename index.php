@@ -95,7 +95,6 @@
                             </h3>
                         </div>
                         <?php } ?>
-
                     </div>
                 </div>
             </div>
