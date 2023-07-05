@@ -1,8 +1,5 @@
 <!-- SCRIPT PHP -->
 <?php
-    // AVVIO LA SESSIONE
-    session_start();
-    
     // DEFINISCO LA FUNZIONE CHE GENERA UNA PASSWORD RANDOM
     function randomPassword($maxLength) {
 
