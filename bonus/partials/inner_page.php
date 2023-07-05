@@ -6,11 +6,15 @@
     // AVVIO LA SESSIONE
     session_start();
 
-    // RECUPERO PASSWORD_LENGTH
-    $passwordLength = $_SESSION['password-length'];
+    // CONTROLLO SE LA SESSIONE è VUOTA
+    if (!empty($_SESSION)){
 
-    // RICHIAMO LA FUNZIONE CHE GENERA UNA PASSWORD RANDOM PASSANDO COME PARAMETRO: PASSWORD_LENGTH, E INSERISCO IL RISULTATO DENTRO PASSWORD
-    $password = randomPassword($passwordLength);
+        // RECUPERO PASSWORD_LENGTH
+        $passwordLength = $_SESSION['password-length'];
+    
+        // RICHIAMO LA FUNZIONE CHE GENERA UNA PASSWORD RANDOM PASSANDO COME PARAMETRO: PASSWORD_LENGTH, E INSERISCO IL RISULTATO DENTRO PASSWORD
+        $password = randomPassword($passwordLength);
+    }
 ?>
 
 <!-- TEMPLATE HTML -->
@@ -35,10 +39,26 @@
                     <div class="col-12 d-flex justify-content-center">
                         <!-- Password Content -->
                         <div class="password-content text-center bg-white rounded-3 p-5 w-50">
-                            <h3>
-                                <?php echo $password ?>
+                            <h3 class="text-break">
+                                <?php if (!empty($_SESSION)){
+                                        // STAMPO LA PASSWORD GENERATA
+                                        echo $password;
+
+                                        // CHIUDO LA SESSIONE
+                                        session_unset();
+                                        session_destroy();
+                                    } else{
+                                        // REINDIRIZZO L'UTENTE ALLA PAGINA PRINCIPALE
+                                        header('Location: ../index.php');
+                                    }
+                                ?>
                             </h3>
                         </div>
+                    </div>
+                    <!-- Redirect Col -->
+                    <div class="col-12 text-center my-5">
+                        <!-- Redirect -->
+                        <a href="../index.php" class="text-decoration-none text-white fs-3">Torna alla pagina principale</a>
                     </div>
                 </div>
             </div>
