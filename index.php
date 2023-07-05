@@ -1,6 +1,11 @@
 <!-- SCRIPT PHP -->
-<?php 
+<?php
+    // CONTROLLO CHE LE VARIABILI DEL METODO GET NON SIANO Null o VALORI NON ACCETTATI
+    if(isset($_GET['password-length']) && $_GET['password-length'] !== '' && $_GET['password-length'] > 0) {
 
+        // RECUPERO PASSWORD_LENGTH
+        $passwordLength = $_GET['password-length'];
+    }
 ?>
 
 <!-- TEMPLATE HTML -->
@@ -30,28 +35,38 @@
                     </div>
                     <!-- Form Col -->
                     <div class="col-12 d-flex justify-content-center">
-                        <!-- Form -->
-                        <form action="index.php" method="GET" class="bg-white rounded-3 p-5 w-50">
-                            <!-- Form Row -->
-                            <div class="row align-items-center">
-                                <!-- Label Col -->
-                                <div class="col-8">
-                                    <!-- Label Password Length -->
-                                    <label for="password-length">Lunghezza Password:</label>
+                        <?php if(!isset($_GET['password-length']) || $_GET['password-length'] === '' || $_GET['password-length'] <= 0){ ?>
+                            <!-- Form -->
+                            <form action="index.php" method="GET" class="bg-white rounded-3 p-5 w-50">
+                                <!-- Form Row -->
+                                <div class="row align-items-center">
+                                    <!-- Label Col -->
+                                    <div class="col-8">
+                                        <!-- Label Password Length -->
+                                        <label for="password-length">Lunghezza Password:</label>
+                                    </div>
+                                    <!-- Input Col -->
+                                    <div class="col-4">
+                                        <!-- Password Length Input -->
+                                        <input type="number" name="password-length" id="password-length" min="1" class="py-2">
+                                    </div>
+                                    <!-- Button Col -->
+                                    <div class="col-12 d-flex justify-content-center mt-5">
+                                        <!-- Submit Button -->
+                                        <button type="submit" class="btn btn-primary mx-1">Invia</button>
+                                        <button type="reset" class="btn btn-secondary mx-1">Annulla</button>
+                                    </div>
                                 </div>
-                                <!-- Input Col -->
-                                <div class="col-4">
-                                    <!-- Password Length Input -->
-                                    <input type="number" name="password-length" id="password-length" class="py-2">
-                                </div>
-                                <!-- Button Col -->
-                                <div class="col-12 d-flex justify-content-center mt-5">
-                                    <!-- Submit Button -->
-                                    <button type="submit" class="btn btn-primary mx-1">Invia</button>
-                                    <button type="reset" class="btn btn-secondary mx-1">Annulla</button>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        <?php } else{ ?>
+                        <!-- Password Content -->
+                        <div class="password-content text-center bg-white rounded-3 p-5 w-50">
+                            <h3>
+                                <?php echo $passwordLength ?>
+                            </h3>
+                        </div>
+                        <?php } ?>
+
                     </div>
                 </div>
             </div>
