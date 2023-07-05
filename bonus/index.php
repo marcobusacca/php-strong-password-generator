@@ -42,16 +42,76 @@
                             <!-- Form -->
                             <form action="index.php" method="GET" class="bg-white rounded-3 p-5 w-50">
                                 <!-- Form Row -->
-                                <div class="row align-items-center">
-                                    <!-- Label Col -->
-                                    <div class="col-8">
-                                        <!-- Label Password Length -->
-                                        <label for="password-length">Lunghezza Password:</label>
+                                <div class="row justify-content-end">
+                                    <!-- First Section Col -->
+                                    <div class="col-12">
+                                        <!-- First Section Row -->
+                                        <div class="row align-items-center">
+                                            <!-- Label Col -->
+                                            <div class="col-8">
+                                                <!-- Label Password Length -->
+                                                <label for="password-length">Lunghezza Password:</label>
+                                            </div>
+                                            <!-- Input Col -->
+                                            <div class="col-4">
+                                                <!-- Password Length Input -->
+                                                <input type="number" name="password-length" id="password-length" min="1" max="100" class="py-2 w-100">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!-- Input Col -->
+                                    <!-- Second Section Col -->
+                                    <div class="col-12 my-5">
+                                        <!-- Second Section Row -->
+                                        <div class="row">
+                                            <!-- Label Col -->
+                                            <div class="col-8">
+                                                <!-- Label Characters Ripetition -->
+                                                <label for="characters-ripetition">Consenti ripetizioni di uno o più caratteri:</label>
+                                            </div>
+                                            <!-- Input Col -->
+                                            <div class="col-4" id="characters-ripetition">
+                                                <!-- Radio Button Row -->
+                                                <div class="row">
+                                                    <!-- Characters Ripetition Radio Button: Yes -->
+                                                    <div class="col-12">
+                                                        <input type="radio" name="characters-ripetition" id="ripetition-true" value="true">
+                                                        <label for="ripetition-true">Si</label>
+                                                    </div>
+                                                    <!-- Characters Ripetition Radio Button: No -->
+                                                    <div class="col-12">
+                                                        <input type="radio" name="characters-ripetition" id="ripetition-false" value="false">
+                                                        <label for="ripetition-false">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Third Section Col -->
                                     <div class="col-4">
-                                        <!-- Password Length Input -->
-                                        <input type="number" name="password-length" id="password-length" min="1" max="100" class="py-2 w-100">
+                                        <!-- Third Section Row -->
+                                        <div class="row w-20">
+                                            <!-- First Checkbox Col -->
+                                            <div class="col-12">
+                                                <!-- Letters Checkbox -->
+                                                <input type="checkbox" name="letters" id="letters" value="0">
+                                                <!-- Letters Checkbox Label -->
+                                                <label for="letters">Lettere</label>
+                                            </div>
+                                            <!-- Second Checkbox Col -->
+                                            <div class="col-12">
+                                                <!-- Numbers Checkbox -->
+                                                <input type="checkbox" name="numbers" id="numbers" value="1">
+                                                <!-- Numbers Checkbox Label -->
+                                                <label for="numbers">Numeri</label>
+                                            </div>
+                                            <!-- Third Checkbox Col -->
+                                            <div class="col-12">
+                                                <!-- Symbols Checkbox -->
+                                                <input type="checkbox" name="symbols" id="symbols" value="2">
+                                                <!-- Symbols Checkbox Label -->
+                                                <label for="symbols">Simboli</label>
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- Button Col -->
                                     <div class="col-12 d-flex justify-content-center mt-5">
