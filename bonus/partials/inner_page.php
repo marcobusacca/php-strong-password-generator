@@ -17,8 +17,6 @@
 
         // RICHIAMO LA FUNZIONE CHE GENERA UNA PASSWORD RANDOM PASSANDO COME PARAMETRO: PASSWORD_LENGTH, E INSERISCO IL RISULTATO DENTRO PASSWORD
         $password = randomPassword($passwordLength, $charactersRipetition);
-
-        var_dump($_SESSION);
     }
 ?>
 

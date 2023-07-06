@@ -54,12 +54,12 @@
             $char = $baseString[$x-1];
 
             // SE L'UTENTE HA SELEZIONATO "NOT_ALLOW_CHARACTERS_RIPETITION", AGGIUNGO ALLA PASSWORD SOLO CARATTERI UNIVOCI
-            if ($charactersRipetition === false && !str_contains($password, $char)){
+            if (!$charactersRipetition && !str_contains($password, $char)){
 
                 // INSERISCO IL CARATTERE RANDOM SELEZIONATO DENTRO LA STRINGA "PASSWORD"
                 $password .= $char;
 
-            } else if($charactersRipetition === true){ // L'UTENTE HA SELEZIONATO "ALLOW_CHARACTERS_RIPETITION"
+            } else if($charactersRipetition){ // L'UTENTE HA SELEZIONATO "ALLOW_CHARACTERS_RIPETITION"
                 
                 // INSERISCO IL CARATTERE RANDOM SELEZIONATO DENTRO LA STRINGA "PASSWORD"
                 $password .= $char;
