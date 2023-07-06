@@ -1,10 +1,5 @@
 <!-- SCRIPT PHP -->
 <?php
-    // DEFINISCO LA FUNZIONE CHE GENERA LA BASE STRING CONTENENTE I CARATTERI PER GENERARE UNA PASSWORD RANDOM
-    function generateBaseString(){
-
-    }
-
     // DEFINISCO LA FUNZIONE CHE GENERA UNA PASSWORD RANDOM
     function randomPassword($maxLength, $charactersRipetition) {
 
