@@ -1,7 +1,7 @@
 <!-- SCRIPT PHP -->
 <?php
     // CONTROLLO CHE LE VARIABILI DEL METODO GET NON SIANO Null o VALORI NON ACCETTATI
-    if(isset($_GET['password-length']) && $_GET['password-length'] !== '' && $_GET['password-length'] > 0 && $_GET['password-length'] <= 100 && isset($_GET['characters-ripetition'])) {
+    if(isset($_GET['password-length']) && $_GET['password-length'] !== '' && $_GET['password-length'] > 0 && $_GET['password-length'] <= 30 && isset($_GET['characters-ripetition'])) {
 
         // AVVIO LA SESSIONE
         session_start();
@@ -12,16 +12,19 @@
         // SALVO CHARACTERS_RIPETITION DENTRO SESSION
         $_SESSION['characters-ripetition'] = $_GET['characters-ripetition'];
 
+        // CONTROLLO SE è STATO SELEZIONATO ALLOW_LETTERS
         if (isset($_GET['letters'])){
             // SALVO LETTERS DENTRO SESSION
             $_SESSION['letters'] = $_GET['letters'];
         }
 
+        // CONTROLLO SE è STATO SELEZIONATO ALLOW_NUMBERS
         if (isset($_GET['numbers'])){
             // SALVO NUMBERS DENTRO SESSION
             $_SESSION['numbers'] = $_GET['numbers'];
         }
 
+        // CONTROLLO SE è STATO SELEZIONATO ALLOW_SYMBOLS
         if (isset($_GET['symbols'])){
             // SALVO NUMBERS DENTRO SESSION
             $_SESSION['symbols'] = $_GET['symbols'];
@@ -54,13 +57,20 @@
                         <!-- Second Title -->
                         <h2 class="text-white fw-bold">Genera una password sicura</h2>
                     </div>
+                    <!-- Banner Col -->
+                    <div class="col-12 d-flex justify-content-center">
+                        <!-- Banner -->
+                        <div class="alert alert-primary w-50">
+                            Prime due voci: OBBLIGATORIE
+                        </div>
+                    </div>
                     <!-- Form Col -->
                     <div class="col-12 d-flex justify-content-center">
                         <?php if(empty($_SESSION)){ ?>
                             <!-- Form -->
                             <form action="index.php" method="GET" class="bg-white rounded-3 p-5 w-50">
                                 <!-- Form Row -->
-                                <div class="row justify-content-end">
+                                <div class="row">
                                     <!-- First Section Col -->
                                     <div class="col-12">
                                         <!-- First Section Row -->
@@ -73,7 +83,7 @@
                                             <!-- Input Col -->
                                             <div class="col-4">
                                                 <!-- Password Length Input -->
-                                                <input type="number" name="password-length" id="password-length" min="1" max="100" class="py-2 w-100">
+                                                <input type="number" name="password-length" id="password-length" min="1" max="30" class="py-2 w-100">
                                             </div>
                                         </div>
                                     </div>
@@ -105,29 +115,35 @@
                                         </div>
                                     </div>
                                     <!-- Third Section Col -->
-                                    <div class="col-4">
+                                    <div class="col-12">
                                         <!-- Third Section Row -->
-                                        <div class="row w-20">
-                                            <!-- First Checkbox Col -->
-                                            <div class="col-12">
-                                                <!-- Letters Checkbox -->
-                                                <input type="checkbox" name="letters" id="letters" value="0">
-                                                <!-- Letters Checkbox Label -->
-                                                <label for="letters">Lettere</label>
-                                            </div>
-                                            <!-- Second Checkbox Col -->
-                                            <div class="col-12">
-                                                <!-- Numbers Checkbox -->
-                                                <input type="checkbox" name="numbers" id="numbers" value="1">
-                                                <!-- Numbers Checkbox Label -->
-                                                <label for="numbers">Numeri</label>
-                                            </div>
-                                            <!-- Third Checkbox Col -->
-                                            <div class="col-12">
-                                                <!-- Symbols Checkbox -->
-                                                <input type="checkbox" name="symbols" id="symbols" value="2">
-                                                <!-- Symbols Checkbox Label -->
-                                                <label for="symbols">Simboli</label>
+                                        <div class="row justify-content-end">
+                                            <!-- Third Section Sub Col -->
+                                            <div class="col-4">
+                                                <!-- Third Section Sub Row -->
+                                                <div class="row">
+                                                    <!-- First Checkbox Col -->
+                                                    <div class="col-12">
+                                                        <!-- Letters Checkbox -->
+                                                        <input type="checkbox" name="letters" id="letters" value="0">
+                                                        <!-- Letters Checkbox Label -->
+                                                        <label for="letters">Lettere</label>
+                                                    </div>
+                                                    <!-- Second Checkbox Col -->
+                                                    <div class="col-12">
+                                                        <!-- Numbers Checkbox -->
+                                                        <input type="checkbox" name="numbers" id="numbers" value="1">
+                                                        <!-- Numbers Checkbox Label -->
+                                                        <label for="numbers">Numeri</label>
+                                                    </div>
+                                                    <!-- Third Checkbox Col -->
+                                                    <div class="col-12">
+                                                        <!-- Symbols Checkbox -->
+                                                        <input type="checkbox" name="symbols" id="symbols" value="2">
+                                                        <!-- Symbols Checkbox Label -->
+                                                        <label for="symbols">Simboli</label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

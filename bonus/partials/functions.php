@@ -1,40 +1,74 @@
 <!-- SCRIPT PHP -->
 <?php
+    // DEFINISCO LA FUNZIONE CHE GENERA LA BASE STRING CONTENENTE I CARATTERI PER GENERARE UNA PASSWORD RANDOM
+    function generateBaseString(){
+
+    }
+
     // DEFINISCO LA FUNZIONE CHE GENERA UNA PASSWORD RANDOM
-    function randomPassword($maxLength) {
+    function randomPassword($maxLength, $charactersRipetition) {
 
-        $characters = [
+        // ELENCO LETTERE (MINUSCOLE E MAIUSCOLE)
+        $letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-            // ELENCO LETTERE (MINUSCOLE E MAIUSCOLE)
-            'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        // ELENCO NUMERI
+        $numbers = '0123456789';
 
-            // ELENCO NUMERI
-            '1234567890',
+        // ELENCO SIMBOLI
+        $symbols = '!@#$%^&*()';
 
-            // ELENCO SIMBOLI
-            '!@#$%^&*()',
-        ];
+        // STRINGA COMPLETA CON TUTTI I TIPI DI CARATTERE
+        $baseString = '';
 
-        // LUNGHEZZA ARRAY TIPOLOGIA CARATTERI
-        $charactersTypeLength = count($characters);
+        // CONTROLLO SE è STATO SELEZIONATO ALLOW_LETTERS
+        if(isset($_SESSION['letters'])){
+            // AGGIUNGO LE LETTERE ALLA STRINGA COMPLETA CON TUTTI I TIPI DI CARATTERE
+            $baseString .= $letters;
+        }
+
+        // CONTROLLO SE è STATO SELEZIONATO ALLOW_NUMBERS
+        if(isset($_SESSION['numbers'])){
+            // AGGIUNGO I NUMERI ALLA STRINGA COMPLETA CON TUTTI I TIPI DI CARATTERE
+            $baseString .= $numbers;
+        }
+
+        // CONTROLLO SE è STATO SELEZIONATO ALLOW_SYMBOLS
+        if(isset($_SESSION['symbols'])){
+            // AGGIUNGO I SIMBOLI ALLA STRINGA COMPLETA CON TUTTI I TIPI DI CARATTERE
+            $baseString .= $symbols;
+        }
+
+        // SE NON è STATO SELEZIONATO NESSUN TIPO DI CARATTERE, AGGIUNGO TUTTI I TIPI DI CARATTERE
+        if(!isset($_SESSION['letters']) && !isset($_SESSION['numbers']) && !isset($_SESSION['symbols'])){
+            $baseString = $letters.$numbers.$symbols;
+        }
 
         // VARIABILE CONTENENTE TUTTI I CARATTERI DELLA PASSWORD RANDOM GENERATA
         $password = '';
 
-        // CICLO FOR CHE VA DA 1 ALLA PASSWORD_LENGTH SCELTA DALL'UTENTE
-        for ($i = 1; $i <= $maxLength; $i++) {
-
-            // NUMERO RANDOM CHE SCEGLIE QUALE TIPOLOGIA DI CARATTERE PRENDERE
-            $x = rand(1, $charactersTypeLength);
+        // CICLO WHILE CHE VA DA 1 ALLA PASSWORD_LENGTH SCELTA DALL'UTENTE
+        while (strlen($password) < $maxLength) {
 
             // LUNGHEZZA ELENCO CARATTERI
-            $charactersLength = strlen($characters[$x-1]);
+            $baseStringLength = strlen($baseString);
 
-            // NUMERO RANDOM CHE SCEGLIE QUALE CARATTERE PRENDERE DELLA TIPOLOGIA CAPITATA
-            $y = rand(1, $charactersLength);
+            // NUMERO RANDOM, INDICE CHE INDICA IL CARATTERE RANDOM DA PRENDERE DALLA BASE STRING
+            $x = rand(1, $baseStringLength);
 
-            // USO IL NUMERO RANDOM COME INDICE PER L'ELENCO CARATTERI, ED INSERISCO IL CARATTERE RANDOM SELEZIONATO DENTRO L'ARRAY PASSWORD
-            $password .= $characters[$x-1][$y-1];
+            // USO L'INDICE PER ESTRARRE IL CARATTERE RANDOM DALLA BASE_STRING
+            $char = $baseString[$x-1];
+
+            // SE L'UTENTE HA SELEZIONATO "NOT_ALLOW_CHARACTERS_RIPETITION", AGGIUNGO ALLA PASSWORD SOLO CARATTERI UNIVOCI
+            if ($charactersRipetition === false && !str_contains($password, $char)){
+
+                // INSERISCO IL CARATTERE RANDOM SELEZIONATO DENTRO LA STRINGA "PASSWORD"
+                $password .= $char;
+
+            } else if($charactersRipetition === true){ // L'UTENTE HA SELEZIONATO "ALLOW_CHARACTERS_RIPETITION"
+                
+                // INSERISCO IL CARATTERE RANDOM SELEZIONATO DENTRO LA STRINGA "PASSWORD"
+                $password .= $char;
+            }
         }
 
         // RITORNO LA PASSWORD

@@ -2,7 +2,7 @@
 <?php
     // AVVIO LA SESSIONE
     session_start();
-    
+
     // IMPORTO FUNCTIONS.PHP
     require __DIR__."/functions.php";
 
@@ -11,9 +11,14 @@
         
         // RECUPERO PASSWORD_LENGTH
         $passwordLength = $_SESSION['password-length'];
-    
+
+        // RECUPERO CHARACTES_RIPETITION
+        $charactersRipetition = $_SESSION['characters-ripetition'] === 'true' ? true : false;
+
         // RICHIAMO LA FUNZIONE CHE GENERA UNA PASSWORD RANDOM PASSANDO COME PARAMETRO: PASSWORD_LENGTH, E INSERISCO IL RISULTATO DENTRO PASSWORD
-        $password = randomPassword($passwordLength);
+        $password = randomPassword($passwordLength, $charactersRipetition);
+
+        var_dump($_SESSION);
     }
 ?>
 
