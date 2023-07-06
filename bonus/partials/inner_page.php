@@ -1,10 +1,10 @@
 <!-- SCRIPT PHP -->
 <?php
-    // IMPORTO FUNCTIONS.PHP
-    require __DIR__."/functions.php";
-
     // AVVIO LA SESSIONE
     session_start();
+    
+    // IMPORTO FUNCTIONS.PHP
+    require __DIR__."/functions.php";
 
     // CONTROLLO SE LA SESSIONE è VUOTA
     if (!empty($_SESSION)){

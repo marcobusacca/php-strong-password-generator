@@ -18,8 +18,8 @@
         // LUNGHEZZA ARRAY TIPOLOGIA CARATTERI
         $charactersTypeLength = count($characters);
 
-        // ARRAY CONTENENTE TUTTI I CARATTERI DELLA PASSWORD RANDOM GENERATA
-        $password = [];
+        // VARIABILE CONTENENTE TUTTI I CARATTERI DELLA PASSWORD RANDOM GENERATA
+        $password = '';
 
         // CICLO FOR CHE VA DA 1 ALLA PASSWORD_LENGTH SCELTA DALL'UTENTE
         for ($i = 1; $i <= $maxLength; $i++) {
@@ -34,10 +34,10 @@
             $y = rand(1, $charactersLength);
 
             // USO IL NUMERO RANDOM COME INDICE PER L'ELENCO CARATTERI, ED INSERISCO IL CARATTERE RANDOM SELEZIONATO DENTRO L'ARRAY PASSWORD
-            $password[] = $characters[$x-1][$y-1];
+            $password .= $characters[$x-1][$y-1];
         }
 
-        // RITORNO L'ARRAY PASSWORD SOTTOFORMA DI STRINGA
-        return implode($password);
+        // RITORNO LA PASSWORD
+        return $password;
     }
 ?>

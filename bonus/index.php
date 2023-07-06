@@ -1,7 +1,7 @@
 <!-- SCRIPT PHP -->
 <?php
     // CONTROLLO CHE LE VARIABILI DEL METODO GET NON SIANO Null o VALORI NON ACCETTATI
-    if(isset($_GET['password-length']) && $_GET['password-length'] !== '' && $_GET['password-length'] > 0 && isset($_GET['characters-ripetition'])) {
+    if(isset($_GET['password-length']) && $_GET['password-length'] !== '' && $_GET['password-length'] > 0 && $_GET['password-length'] <= 100 && isset($_GET['characters-ripetition'])) {
 
         // AVVIO LA SESSIONE
         session_start();
